@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -12,6 +12,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@vueuse/core": "^12.8.2",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
@@ -20,6 +21,8 @@
     "@tsconfig/node22": "^22.0.0",
     "@types/node": "^22.13.4",
     "@unocss/eslint-plugin": "^66.0.0",
+    "@unocss/preset-web-fonts": "66.1.0-beta.3",
+    "@unocss/reset": "66.1.0-beta.3",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vitejs/plugin-vue-jsx": "^4.1.1",
     "@vue/tsconfig": "^0.7.0",

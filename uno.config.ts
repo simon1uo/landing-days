@@ -1,4 +1,7 @@
 import {
+  createLocalFontProcessor,
+} from '@unocss/preset-web-fonts/local'
+import {
   defineConfig,
   presetAttributify,
   presetIcons,
@@ -11,7 +14,7 @@ import {
 
 export default defineConfig({
   shortcuts: [
-    { 'bg-base': 'bg-white dark:bg-black', 'color-base': 'text-black dark:text-white' },
+    { 'bg-base': 'bg-white dark:bg-dark', 'color-base': 'text-black dark:text-white' },
   ],
   theme: {
     colors: {
@@ -21,7 +24,14 @@ export default defineConfig({
   presets: [
     presetWind3(),
     presetAttributify(),
-    presetIcons(),
+    presetIcons({
+      extraProperties: {
+        'display': 'inline-block',
+        'height': '1.2em',
+        'width': '1.2em',
+        'vertical-align': 'text-bottom',
+      },
+    }),
     presetTypography(),
     presetWebFonts({
       provider: 'bunny',
@@ -31,6 +41,7 @@ export default defineConfig({
         condensed: 'Roboto Condensed',
         wisper: 'Bad Script',
       },
+      processors: createLocalFontProcessor(),
     }),
   ],
   transformers: [

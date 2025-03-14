@@ -9,6 +9,9 @@ import { onMounted, ref } from 'vue'
 
 <template>
   <HeaderNav />
+  <div class="content">
+    <RouterView />
+  </div>
   <Footer />
   <div class="main absolute left-0 top-0 h-screen w-screen overflow-hidden bg-base" />
 </template>
@@ -35,6 +38,7 @@ import { onMounted, ref } from 'vue'
     50vmax 50vmax;
   background-repeat: no-repeat;
   animation: 10s movement linear infinite;
+  z-index: -1;
 }
 
 /* 暗黑模式 */
@@ -122,5 +126,13 @@ import { onMounted, ref } from 'vue'
       -10vmax 10vmax,
       40vmax 60vmax;
   }
+}
+
+.content {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+  height: calc(100vh - 9rem);
+  position: relative;
+  overflow: hidden;
 }
 </style>

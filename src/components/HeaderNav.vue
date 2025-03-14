@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { useDark } from '@vueuse/core'
 import Logo from './Logo.vue'
+
+
 </script>
 
 <template>
@@ -10,7 +13,8 @@ import Logo from './Logo.vue'
 
     <nav class="nav color-[#303030] dark:color-[#fdfdfd]">
       <RouterLink to="/" class="lt-md:hidden">
-        Home / <div i-uil-home />
+        Home /
+        <div i-uil-home />
       </RouterLink>
       <RouterLink to="/about" class="lt-md:hidden">
         About /

@@ -36,10 +36,14 @@ export default defineConfig({
     presetWebFonts({
       provider: 'bunny',
       fonts: {
-        sans: 'Inter',
+        sans: ['Montserrat', 'Roboto',],
         mono: 'DM Mono',
         condensed: 'Roboto Condensed',
         wisper: 'Bad Script',
+        variables: {
+          name: 'Montserrat',
+          weights: ['100..900']
+        }
       },
       processors: createLocalFontProcessor(),
     }),

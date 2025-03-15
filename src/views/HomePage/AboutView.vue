@@ -1,5 +1,5 @@
 <template>
-  <div class="about p-5 font-size-1.5em text-[#303030] dark:text-[#fdfdfd]">
+  <div class="about font-sans p-5 font-size-1.5em text-[#303030] dark:text-[#fdfdfd]">
     <div class="about-content">
       <div class="h-1 font-bold">
         ABOUT this PROJECT ( <span i-uil-rocket /> )
@@ -35,9 +35,7 @@
 
 .back a {
   text-decoration: none;
-  color: inherit;
-  font-family: 'Inter', sans-serif;
-
+  color: inherit;  
   font-size: 1.5rem;
 }
 

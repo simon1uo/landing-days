@@ -2,7 +2,55 @@
 import { useDark } from '@vueuse/core'
 import Logo from './Logo.vue'
 
+const isDark = useDark()
 
+function toggleDark(event: MouseEvent) {
+  // @ts-expect-error experimental API
+  const isAppearanceTransition = document.startViewTransition
+    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  if (!isAppearanceTransition) {
+    isDark.value = !isDark.value
+    return
+  }
+
+  const x = event.clientX
+  const y = event.clientY
+  const endRadius = Math.hypot(
+    Math.max(x, innerWidth - x),
+    Math.max(y, innerHeight - y),
+  )
+  const transition = document.startViewTransition(async () => {
+    isDark.value = !isDark.value
+  })
+  transition.ready
+    .then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ]
+      document.documentElement.animate(
+        {
+          clipPath: isDark.value
+            ? [...clipPath].reverse()
+            : clipPath,
+        },
+        {
+          duration: 400,
+          easing: 'ease-out',
+          pseudoElement: isDark.value
+            ? '::view-transition-old(root)'
+            : '::view-transition-new(root)',
+        },
+      )
+    })
+}
+
+const route = useRoute()
+const isActive = (path: string) => {
+  console.log(path, route.path);
+  return path === route.path
+}
 </script>
 
 <template>
@@ -11,14 +59,17 @@ import Logo from './Logo.vue'
       <Logo />
     </RouterLink>
 
-    <nav class="nav color-[#303030] dark:color-[#fdfdfd]">
-      <RouterLink to="/" class="lt-md:hidden">
-        Home /
-        <div i-uil-home />
-      </RouterLink>
-      <RouterLink to="/about" class="lt-md:hidden">
-        About /
-      </RouterLink>
+    <nav class="nav font-sans color-[#303030] dark:color-[#fdfdfd]">
+      (<span class="cursor-pointer font-size-1.5em" @click="toggleDark">
+        <span v-if="isDark" i-uil-moon />
+        <span v-else i-uil-sun />
+      </span>)
+      <RouterLink to="/" class="lt-md:hidden" :class="{'font-bold': isActive('/')}">
+        Home
+      </RouterLink> /
+      <RouterLink to="/about" class="lt-md:hidden" :class="{'font-bold': isActive('/about')}">
+        About
+      </RouterLink> /
       <a href="https://github.com/simon1uo/landing-days" target="_blank" title="GitHub" class="lt-md:hidden">
         GitHub (<span i-uil-github />) /
       </a>
@@ -48,7 +99,6 @@ import Logo from './Logo.vue'
   transition: opacity 1s ease;
   opacity: 0.6;
   outline: none;
-  font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
   line-height: 1;
 }

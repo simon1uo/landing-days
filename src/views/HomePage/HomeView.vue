@@ -10,9 +10,11 @@ import { onMounted, ref } from 'vue'
 <template>
   <HeaderNav />
   <div class="content">
-    <Transition name="fade">
-      <RouterView />
-    </Transition>
+    <RouterView v-slot="{Component}">
+      <Transition name="fade">
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
   </div>
   <Footer />
   <div class="main absolute left-0 top-0 h-screen w-screen overflow-hidden bg-base" />

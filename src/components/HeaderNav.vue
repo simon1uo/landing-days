@@ -71,8 +71,8 @@ const isActive = (path: string) => {
         About
       </RouterLink> /
       <a href="https://github.com/simon1uo/landing-days" target="_blank" title="GitHub" class="lt-md:hidden">
-        GitHub (<span i-uil-github />) /
-      </a>
+        GitHub (<span i-uil-github />) 
+      </a> /
       <a>Start Landing<span i-uil-arrow-right /></a>
     </nav>
   </header>
@@ -96,15 +96,18 @@ const isActive = (path: string) => {
   cursor: pointer;
   text-decoration: none;
   color: inherit;
-  transition: opacity 1s ease;
+  transition: opacity 1s ease, font-weight 1s ease;
   opacity: 0.6;
   outline: none;
   font-size: 1.5rem;
   line-height: 1;
+  font-weight: light;
+  letter-spacing: -0.05em;
 }
 
 .nav a:hover {
   opacity: 1;
   text-decoration-color: inherit;
+  font-weight: bold;
 }
 </style>

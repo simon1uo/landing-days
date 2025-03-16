@@ -51,7 +51,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="logo-container font-variables color-[#303030] dark:color-[#fdfdfd]">
+  <div class="logo-container font-variables  color-[#303030] dark:color-[#fdfdfd]">
     <template v-for="(item, index) in characters" :key="item.key">
       <span v-if="item.isSpace" class="inline-block w-2">
       </span>
@@ -68,7 +68,7 @@ onMounted(() => {
   font-size: 2rem;
   line-height: 1;
   display: flex;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em;
   align-items: center;
 }
 

@@ -9,8 +9,8 @@
         "./src/*"
       ]
     },
-    "noEmit": false,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "noEmit": false
   },
   "include": [
     "env.d.ts",

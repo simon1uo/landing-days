@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useDark } from '@vueuse/core'
+import { useRouter } from 'vue-router'
 import Logo from './Logo.vue'
 
 const isDark = useDark()
+const router = useRouter()
 
 function toggleDark(event: MouseEvent) {
   // @ts-expect-error experimental API
@@ -50,6 +52,15 @@ const route = useRoute()
 function isActive(path: string) {
   return path === route.path
 }
+
+function startLanding() {
+  // 获取所有 day 目录
+  const days = Array.from({ length: 30 }, (_, i) => `day${i + 1}`)
+  // 随机选择一个 day
+  const randomDay = days[Math.floor(Math.random() * days.length)]
+  // 跳转到随机选择的 day 页面
+  router.push(`/${randomDay}`)
+}
 </script>
 
 <template>
@@ -65,14 +76,14 @@ function isActive(path: string) {
       </span>)
       <RouterLink to="/" class="lt-md:hidden" :class="{ 'font-bold': isActive('/') }">
         Home
-      </RouterLink> /
+      </RouterLink> <span class="lt-md:hidden">/</span>
       <RouterLink to="/about" class="lt-md:hidden" :class="{ 'font-bold': isActive('/about') }">
         About
-      </RouterLink> /
+      </RouterLink> <span class="lt-md:hidden">/</span>
       <a href="https://github.com/simon1uo/landing-days" target="_blank" title="GitHub" class="lt-md:hidden">
         GitHub (<span i-uil-github />)
       </a> /
-      <a>Start Landing<span i-uil-arrow-right /></a>
+      <a @click="startLanding">Start Landing<span i-uil-arrow-right /></a>
     </nav>
   </header>
 </template>

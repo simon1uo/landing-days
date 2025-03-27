@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useDark } from '@vueuse/core'
-
 const LOGO_TEXT = 'LandingDays'
 const AnimationDuration = 3
 const DelayBetweenChars = 0.2

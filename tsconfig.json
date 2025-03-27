@@ -6,7 +6,7 @@
     },
     "types": [
       "unplugin-icons/types/vue"
-    ],
+    ]
   },
   "references": [
     {
@@ -16,5 +16,5 @@
       "path": "./tsconfig.app.json"
     }
   ],
-  "files": [],
+  "files": []
 }

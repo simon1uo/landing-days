@@ -32,11 +32,11 @@ export default defineConfig({
       defaultClass: 'inline',
       defaultStyle: 'vertical-align: sub;',
     }),
-    AutoImport({ 
+    AutoImport({
       imports: [
         'vue',
-        'vue-router'
-      ], 
+        'vue-router',
+      ],
     }),
 
   ],

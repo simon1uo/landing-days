@@ -8,16 +8,18 @@ import { onMounted, ref } from 'vue'
 </script>
 
 <template>
-  <HeaderNav />
-  <div class="content">
-    <RouterView v-slot="{Component}">
-      <Transition name="fade">
-        <component :is="Component" />
-      </Transition>
-    </RouterView>
+  <div id="home-view">
+    <HeaderNav />
+    <div class="content">
+      <RouterView v-slot="{ Component }">
+        <Transition name="fade">
+          <component :is="Component" />
+        </Transition>
+      </RouterView>
+    </div>
+    <Footer />
+    <div class="main absolute left-0 top-0 h-screen w-screen overflow-hidden bg-base" />
   </div>
-  <Footer />
-  <div class="main absolute left-0 top-0 h-screen w-screen overflow-hidden bg-base" />
 </template>
 
 <style>

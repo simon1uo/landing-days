@@ -47,8 +47,7 @@ function toggleDark(event: MouseEvent) {
 }
 
 const route = useRoute()
-const isActive = (path: string) => {
-  console.log(path, route.path);
+function isActive(path: string) {
   return path === route.path
 }
 </script>
@@ -59,19 +58,19 @@ const isActive = (path: string) => {
       <Logo />
     </RouterLink>
 
-    <nav class="nav font-sans color-[#303030] dark:color-[#fdfdfd]">
+    <nav class="nav color-[#303030] font-sans dark:color-[#fdfdfd]">
       (<span class="cursor-pointer font-size-1.5em" @click="toggleDark">
         <span v-if="isDark" i-uil-moon />
         <span v-else i-uil-sun />
       </span>)
-      <RouterLink to="/" class="lt-md:hidden" :class="{'font-bold': isActive('/')}">
+      <RouterLink to="/" class="lt-md:hidden" :class="{ 'font-bold': isActive('/') }">
         Home
       </RouterLink> /
-      <RouterLink to="/about" class="lt-md:hidden" :class="{'font-bold': isActive('/about')}">
+      <RouterLink to="/about" class="lt-md:hidden" :class="{ 'font-bold': isActive('/about') }">
         About
       </RouterLink> /
       <a href="https://github.com/simon1uo/landing-days" target="_blank" title="GitHub" class="lt-md:hidden">
-        GitHub (<span i-uil-github />) 
+        GitHub (<span i-uil-github />)
       </a> /
       <a>Start Landing<span i-uil-arrow-right /></a>
     </nav>

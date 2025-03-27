@@ -6,9 +6,9 @@ const AnimationDuration = 3
 const DelayBetweenChars = 0.2
 
 const characters = ref<{
-  char: string,
-  isSpace: boolean,
-  key: string,
+  char: string
+  isSpace: boolean
+  key: string
 }[]>([])
 
 // function getCharStyle(index: number) {
@@ -21,44 +21,41 @@ const characters = ref<{
 //   }
 // }
 
-
-
 function initCharacters() {
   for (let index = 0; index < LOGO_TEXT.length; index++) {
-    const element = LOGO_TEXT[index];
+    const element = LOGO_TEXT[index]
     if (element !== ' ') {
       characters.value.push({
         char: element,
         isSpace: false,
-        key: `char-${index}`
+        key: `char-${index}`,
       })
-    } else {
+    }
+    else {
       characters.value.push({
         char: ' ',
         isSpace: true,
-        key: `space-${index}`
+        key: `space-${index}`,
       })
     }
   }
-  console.log(characters.value);
 }
 
 onMounted(() => {
   initCharacters()
 })
-
-
 </script>
 
 <template>
-  <div class="logo-container font-variables  color-[#303030] dark:color-[#fdfdfd]">
+  <div class="logo-container color-[#303030] font-variables dark:color-[#fdfdfd]">
     <template v-for="(item, index) in characters" :key="item.key">
-      <span v-if="item.isSpace" class="inline-block w-2">
-      </span>
-      <span v-else class="inline-block" :style="{
-        animation: `fontWeightAnimate ${AnimationDuration}s infinite alternate`,
-        animationDelay: `${index * DelayBetweenChars}s`,
-      }">{{ item.char }}</span>
+      <span v-if="item.isSpace" class="inline-block w-2" />
+      <span
+        v-else class="inline-block" :style="{
+          animation: `fontWeightAnimate ${AnimationDuration}s infinite alternate`,
+          animationDelay: `${index * DelayBetweenChars}s`,
+        }"
+      >{{ item.char }}</span>
     </template>
   </div>
 </template>

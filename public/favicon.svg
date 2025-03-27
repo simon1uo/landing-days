@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <style>
+    .favicon-shape {
+      fill: #4A4A4A; /* 深灰色 */
+    }
+    
+    /* 暗黑主题 */
+    html.dark .favicon-shape {
+      fill: #E2E8F0; /* 浅灰色 */
+    }
+  </style>
+   
+  <polygon class="favicon-shape" points="8,2 4,14 12,14" fill-opacity="0.8" />
+</svg>
